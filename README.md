@@ -9,7 +9,7 @@ satisfies the [SafeCurves criteria](https://safecurves.cr.yp.to/index.html).
 
 The script ``verify.sage`` is based on
 [this script from the SafeCurves site](https://safecurves.cr.yp.to/verify.html),
-modified
+modified by [Daira Hopwood](https://github.com/daira)
 
 * to support twisted Edwards curves;
 * to generate a file 'primes' containing the primes needed for primality proofs,
