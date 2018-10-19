@@ -32,17 +32,17 @@ def find1Mod4(prime, curveCofactor, twistCofactor, A):
    return findCurve(prime, curveCofactor, twistCofactor, A)
 
 def findGenPoint(prime, A, EC, N):
-    F = GF(prime)
-    for uInt in range(1, 1e3):
-        u = F(uInt)
-        v2 = u^3 + A*u^2 + u
-        if not v2.is_square():
-            continue
-        v = v2.sqrt()
+   F = GF(prime)
+   for uInt in range(1, 1e3):
+      u = F(uInt)
+      v2 = u^3 + A*u^2 + u
+      if not v2.is_square():
+         continue
+         v = v2.sqrt()
         
-        point = EC(u, v)
-        pointOrder = point.order()
-        if pointOrder == N:
+         point = EC(u, v)
+         pointOrder = point.order()
+         if pointOrder == N:
             return point
 
 def mont_to_ted(u, v , r):
