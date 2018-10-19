@@ -77,7 +77,7 @@ assert(a*d*(a-d)!=0)
 
 s = factor(EC.order())
 print ("l : " , s)
-N = cofactor * s # order of the curve
+N = h * s # order of the curve
 print (factor(EC.quadratic_twist().order()))
 
 # get generator point
