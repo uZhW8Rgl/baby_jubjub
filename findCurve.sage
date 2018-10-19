@@ -60,14 +60,12 @@ def isOnEd(x,y,r,a,d):
 
 prime = 21888242871839275222246405745257275088548364400416034343698204186575808495617
 Fr = GF(prime)
-l = 2736030358979909402780800718157159386076813972158567259200215660948447373041
 h = 8 # cofactor
-N = cofactor * l
 
 A = int(sys.argv[1])
 A, EC = find1Mod4(prime, h, 4, A)
 
-# A = 170214 another candiate
+# A = 170214 another candidate
 B = 1
 a = A + 2 / B
 d = A - 2 / B
@@ -79,22 +77,23 @@ assert(a*d*(a-d)!=0)
 
 s = factor(EC.order())
 print ("l : " , s)
+N = cofactor * s # order of the curve
 print (factor(EC.quadratic_twist().order()))
 
 # get generator point
 u_gen, v_gen, w_gen = findGenPoint(prime, A, EC, N)
 # find that generator point on the edwards curve
-gen_x, gen_y = mont_to_ted(u_gen,v_gen,prime)
+gen_x, gen_y = mont_to_ted(u_gen, v_gen, prime)
 # make sure the generator point is on the twisted edwards curve
-assert(isOnEd(gen_x,gen_y, prime , a , d))
+assert(isOnEd(gen_x, gen_y, prime, a , d))
 # go back to montgomery
-u , v = ted_to_mont(gen_x, gen_y , prime)
+u , v = ted_to_mont(gen_x, gen_y, prime)
 # confirm we are back where we started from
 assert (u == u_gen)
 assert (v == v_gen)
 
 # get base point on montgorery curve by multiplying the generator point by h
-base_x , base_y, base_z = h*EC(u_gen,v_gen)
+base_x , base_y, base_z = h*EC(u_gen, v_gen)
 # find the same points on twisted edwards curve
 base_x , base_y = mont_to_ted(base_x , base_y, prime)
 
