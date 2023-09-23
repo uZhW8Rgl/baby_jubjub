@@ -28,6 +28,10 @@ def find1Mod4(prime, curveCofactor, twistCofactor, A):
         assert((prime % 4) == 1)
         return findCurve(prime, curveCofactor, twistCofactor, A)
 
+#def find3Mod4(prime, curveCofactor, twistCofactor, A):
+#        assert((prime % 4) == 3)
+#        return findCurve(prime, curveCofactor, twistCofactor, A)
+
 # Baby Jubjub in Montgomery form
 ###########################################################################
 prime = 21888242871839275222246405745257275088548364400416034343698204186575808495617
